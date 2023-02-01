@@ -67,7 +67,9 @@ cd school-library
 Run the program
 
 ```bash
-ruby main.rb
+irb person.rb
+irb student.rb
+irb teacher.rb 
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -78,7 +80,7 @@ ruby main.rb
 
 - GitHub: [@amexabee](https://github.com/amexabee)
 - Twitter: [@i_amanuel](https://twitter.com/i_amanuel)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/amanuel-galema)
+- LinkedIn: [Amanuel Galema](https://linkedin.com/in/amanuel-galema)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
