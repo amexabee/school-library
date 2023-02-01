@@ -67,9 +67,8 @@ cd school-library
 Run the program
 
 ```bash
-irb person.rb
-irb student.rb
-irb teacher.rb 
+ruby person.rb
+
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
