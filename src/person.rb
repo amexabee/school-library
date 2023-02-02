@@ -1,9 +1,7 @@
 require_relative 'nameable'
 
 class Person < Nameable
-  # rubocop:disable Style/OptionalBooleanParameter
-  def initialize(age, name = 'Unknown', parent_permission = true)
-    # rubocop:enable Style/OptionalBooleanParameter
+  def initialize(age, name = 'Unknown', parent_permission: true)
     super()
     @id = Random.rand(1..1000)
     @name = name
