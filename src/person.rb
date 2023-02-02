@@ -13,8 +13,8 @@ class Person < Nameable
     @parent_permission = parent_permission
     @rentals = []
   end
-  
-  def add_rental(book, date) 
+
+  def add_rental(book, date)
     @rentals.push(Rental.new(date, book, self))
   end
 
