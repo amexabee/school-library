@@ -2,61 +2,61 @@ require_relative 'book'
 require_relative 'student'
 require_relative 'teacher'
 
-class App 
+class App
   attr_reader :books, :persons, :rentals
 
   def initialize
     @books = []
     @persons = []
     @rentals = []
-  end  
+  end
 
   def prompt
     puts "\n"
-    puts "Please choose an option by entering a number"
-    puts "1. List all books"
-    puts "2. List all people"
-    puts "3. Create a person"
-    puts "4. Create a book"
-    puts "5. Create a rental"
-    puts "6. List all rentals for a given person id"
-    puts "7. Exit"
-  end 
+    puts 'Please choose an option by entering a number'
+    puts '1. List all books'
+    puts '2. List all people'
+    puts '3. Create a person'
+    puts '4. Create a book'
+    puts '5. Create a rental'
+    puts '6. List all rentals for a given person id'
+    puts '7. Exit'
+  end
 
   def receive_input
     input = gets.chomp
     number = input.to_i
-      case number
-      when 1
-        list_books()
-        return false
-      when 2
-        list_persons()
-        return false
-      when 3
-        create_person()
-      when 4
-        create_book()
-        return false
-      when 5
-        create_rental()
-        return false
-      when 6
-        list_rentals()
-        return false  
-      when 7    
-        puts "\n"
-        puts "Thank you for using this app."
-        return true
-      else
-        puts "\n"
-        puts "Warning! Please provide a valid number"
-      end
+    case number
+    when 1
+      list_books
+      false
+    when 2
+      list_persons
+      false
+    when 3
+      create_person
+    when 4
+      create_book
+      false
+    when 5
+      create_rental
+      false
+    when 6
+      list_rentals
+      false
+    when 7
+      puts "\n"
+      puts 'Thank you for using this app.'
+      true
+    else
+      puts "\n"
+      puts 'Warning! Please provide a valid number'
+    end
   end
 
   def list_books
     books.each do |element|
-        puts "Title: \"#{element.title}\", Author: #{element.author}"
+      puts "Title: \"#{element.title}\", Author: #{element.author}"
     end
   end
 
@@ -71,64 +71,65 @@ class App
   end
 
   def create_person
-    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     input = gets.chomp
-    if input == "1"
-      create_student()    
-    elsif input == "2"
-      create_teacher()
+    case input
+    when '1'
+      create_student
+    when '2'
+      create_teacher
     else
       puts "\n"
-      puts "Warning! Please provide a valid number"
+      puts 'Warning! Please provide a valid number'
     end
   end
 
-  def create_student 
-    age = prompt_age()
-    print "Name: "
+  def create_student
+    age = prompt_age
+    print 'Name: '
     name = gets.chomp
-    print "Has parent permission? [Y/N]: "
+    print 'Has parent permission? [Y/N]: '
     gets.chomp
     student = Student.new(age, name)
     persons << student
-    puts "Student created successfully"
+    puts 'Student created successfully'
   end
 
-  def create_teacher 
-    age = prompt_age()
-    print "Name: "
+  def create_teacher
+    age = prompt_age
+    print 'Name: '
     name = gets.chomp
-    print "Specialization: "
+    print 'Specialization: '
     specialization = gets.chomp
     teacher = Teacher.new(age, specialization, name)
     persons << teacher
-    puts "Teacher created successfully"
+    puts 'Teacher created successfully'
   end
 
   def prompt_age
-    print "Age: "
+    print 'Age: '
     num = gets.chomp
-      age = num.to_i
-      if age == 0
-        puts "\n"
-        puts "Warning! Please provide a valid age"
-        prompt_age()
-      end
-      age
+    age = num.to_i
+    if age.zero?
+      puts "\n"
+      puts 'Warning! Please provide a valid age'
+      prompt_age
+    end
+    age
   end
 
   def create_book
-    print "Title: "
+    print 'Title: '
     title = gets.chomp
-    print "Author: "
+    print 'Author: '
     author = gets.chomp
     book = Book.new(title, author)
     books << book
-    puts "Book created successfully"
+    puts 'Book created successfully'
   end
 
   def create_rental
-    puts "Select a book from the following list by number"
+    puts 'Select a book from the following list by number'
     books.each_with_index do |element, index|
       puts "#{index}) Title: \"#{element.title}\", Author: #{element.author}"
     end
@@ -136,7 +137,7 @@ class App
     index = input.to_i
     book = books[index]
 
-    puts "Select a person from the following list by number (not id)"
+    puts 'Select a person from the following list by number (not id)'
     persons.each_with_index do |element, index|
       if element.is_a?(Student)
         puts "#{index}) [Student] Name: #{element.name}, ID: #{element.id}, Age: #{element.age}"
@@ -148,23 +149,21 @@ class App
     index = input.to_i
     person = persons[index]
 
-    print "Date: "
+    print 'Date: '
     date = gets.chomp
 
     rental = Rental.new(date, book, person)
     rentals << rental
-    puts "Rental created successfully"
+    puts 'Rental created successfully'
   end
 
   def list_rentals
-    puts "Id of person: "
+    print 'Id of person: '
     input = gets.chomp
     id = input.to_i
-    print "Rentals: "
+    puts 'Rentals: '
     rentals.each do |element|
-        if element.person.id == id
-          puts "Date: #{element.date}, Book \"#{element.book.title}\" by #{element.book.author}"
-        end
+      puts "Date: #{element.date}, Book \"#{element.book.title}\" by #{element.book.author}" if element.person.id == id
     end
   end
 end
