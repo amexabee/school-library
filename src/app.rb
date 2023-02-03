@@ -1,4 +1,6 @@
 require_relative 'book'
+require_relative 'student'
+require_relative 'teacher'
 
 class App 
   attr_reader :books, :persons
@@ -52,6 +54,60 @@ class App
         puts "Title: #{element.title}"
         puts "Author: #{element.author}"
     end
+  end
+
+  def list_persons
+    persons.each do |element|
+        puts "Age: #{element.age}"
+        puts "Name: #{element.name}"
+    end
+  end
+
+  def create_person
+    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
+    input = gets.chomp
+    if input == "1"
+      create_student()    
+    elsif input == "2"
+      create_teacher()
+    else
+      puts "\n"
+      puts "Warning! Please provide a valid number"
+    end
+  end
+
+  def create_student 
+    age = prompt_age()
+    print "Name: "
+    name = gets.chomp
+    print "Has parent permission? [Y/N]: "
+    gets.chomp
+    student = Student.new(age, name)
+    persons << student
+    puts "Student created successfully"
+  end
+
+  def create_teacher 
+    age = prompt_age()
+    print "Name: "
+    name = gets.chomp
+    print "Specialization: "
+    specialization = gets.chomp
+    teacher = Teacher.new(age, specialization, name)
+    persons << teacher
+    puts "Teacher created successfully"
+  end
+
+  def prompt_age
+    print "Age: "
+    num = gets.chomp
+      age = num.to_i
+      if age == 0
+        puts "\n"
+        puts "Warning! Please provide a valid age"
+        prompt_age()
+      end
+      age
   end
 
   def create_book
