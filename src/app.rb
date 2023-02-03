@@ -30,10 +30,10 @@ class App
         list_books()
         return false
       when 2
-        "list_persons()"
+        list_persons()
         return false
       when 3
-        "create_person()"
+        create_person()
       when 4
         create_book()
         return false
