@@ -3,11 +3,12 @@ require_relative 'student'
 require_relative 'teacher'
 
 class App 
-  attr_reader :books, :persons
+  attr_reader :books, :persons, :rentals
 
   def initialize
     @books = []
     @persons = []
+    @rentals = []
   end  
 
   def prompt
@@ -37,8 +38,11 @@ class App
       when 4
         create_book()
         return false
-      when 5..6
-        puts "What now?"  
+      when 5
+        create_rental()
+        return false
+      when 6
+        list_rentals()  
       when 7    
         puts "\n"
         puts "Thank you for using this app."
@@ -120,5 +124,40 @@ class App
     book = Book.new(title, author)
     books << book
     puts "Book created successfully"
+  end
+
+  def create_rental
+    puts "Select a book from the following list by number"
+    books.each_with_index do |element, index|
+      puts "#{index}) Title: \"#{element.title}\", Author: #{element.author}"
+    end
+    input = gets.chomp
+    index = gets.to_i
+    book = books[index]
+
+    puts "Select a person from the following list by number (not id)"
+    persons.each_with_index do |element, index|
+      if element.is_a?(Student)
+        puts "#{index}) [Student] Name: #{element.name}, ID: #{element.id}, Age: #{element.age}"
+      else
+        puts "#{index}) [Teacher] Name: #{element.name}, ID: #{element.id}, Age: #{element.age}"
+      end
+    end
+    input = gets.chomp
+    index = gets.to_i
+    person = persons[index]
+
+    print "Date: "
+    date = gets.chomp
+
+    rental = Rental.new(date, book, person)
+    rentals << rental
+    puts "Rental created successfully"
+  end
+
+  def list_rentals
+    rentals.each do |element|
+        puts "Date: \"#{element.date}\""
+    end
   end
 end
