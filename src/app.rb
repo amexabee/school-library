@@ -42,7 +42,8 @@ class App
         create_rental()
         return false
       when 6
-        list_rentals()  
+        list_rentals()
+        return false  
       when 7    
         puts "\n"
         puts "Thank you for using this app."
@@ -157,8 +158,13 @@ class App
 
   def list_rentals
     puts "Id of person: "
+    input = gets.chomp
+    id = input.to_i
+    print "Rentals: "
     rentals.each do |element|
-        puts "Date: \"#{element.date}\""
+        if element.person.id == id
+          puts "Date: #{element.date}, Book \"#{element.book.title}\" by #{element.book.author}"
+        end
     end
   end
 end
