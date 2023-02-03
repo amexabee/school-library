@@ -132,7 +132,7 @@ class App
       puts "#{index}) Title: \"#{element.title}\", Author: #{element.author}"
     end
     input = gets.chomp
-    index = gets.to_i
+    index = input.to_i
     book = books[index]
 
     puts "Select a person from the following list by number (not id)"
@@ -144,7 +144,7 @@ class App
       end
     end
     input = gets.chomp
-    index = gets.to_i
+    index = input.to_i
     person = persons[index]
 
     print "Date: "
@@ -156,6 +156,7 @@ class App
   end
 
   def list_rentals
+    puts "Id of person: "
     rentals.each do |element|
         puts "Date: \"#{element.date}\""
     end
