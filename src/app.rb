@@ -23,27 +23,23 @@ class App
     puts '7. Exit'
   end
 
+  # rubocop:disable Metrics
   def receive_input
     input = gets.chomp
     number = input.to_i
     case number
     when 1
       list_books
-      false
     when 2
       list_persons
-      false
     when 3
       create_person
     when 4
       create_book
-      false
     when 5
       create_rental
-      false
     when 6
       list_rentals
-      false
     when 7
       puts "\n"
       puts 'Thank you for using this app.'
@@ -52,7 +48,9 @@ class App
       puts "\n"
       puts 'Warning! Please provide a valid number'
     end
+    false
   end
+  # rubocop:enable Metrics
 
   def list_books
     books.each do |element|
@@ -129,14 +127,28 @@ class App
   end
 
   def create_rental
+    book = select_book
+    person = select_person
+
+    print 'Date: '
+    date = gets.chomp
+
+    rental = Rental.new(date, book, person)
+    rentals << rental
+    puts 'Rental created successfully'
+  end
+
+  def select_book
     puts 'Select a book from the following list by number'
     books.each_with_index do |element, index|
       puts "#{index}) Title: \"#{element.title}\", Author: #{element.author}"
     end
     input = gets.chomp
     index = input.to_i
-    book = books[index]
+    books[index]
+  end
 
+  def select_person
     puts 'Select a person from the following list by number (not id)'
     persons.each_with_index do |element, index|
       if element.is_a?(Student)
@@ -147,14 +159,7 @@ class App
     end
     input = gets.chomp
     index = input.to_i
-    person = persons[index]
-
-    print 'Date: '
-    date = gets.chomp
-
-    rental = Rental.new(date, book, person)
-    rentals << rental
-    puts 'Rental created successfully'
+    persons[index]
   end
 
   def list_rentals
