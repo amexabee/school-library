@@ -4,10 +4,10 @@ def main
   puts 'Welcome to School Library App!'
   app = App.new
 
-  terminate = false
-  until terminate
+  repeat = true
+  while repeat
     app.prompt
-    terminate = app.receive_input
+    repeat = app.receive_input
   end
 end
 

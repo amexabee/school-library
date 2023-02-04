@@ -3,24 +3,22 @@ require_relative 'student'
 require_relative 'teacher'
 
 class App
-  attr_reader :books, :persons, :rentals
+  attr_reader :books, :persons, :rentals, :prompts
 
   def initialize
     @books = []
     @persons = []
     @rentals = []
+    @prompts = ['Please choose an option by entering a number', '1. List all books', '2. List all people',
+                '3. Create a person', '4. Create a book', '5. Create a rental',
+                '6. List all rentals for a given person id', '7. Exit']
   end
 
   def prompt
     puts "\n"
-    puts 'Please choose an option by entering a number'
-    puts '1. List all books'
-    puts '2. List all people'
-    puts '3. Create a person'
-    puts '4. Create a book'
-    puts '5. Create a rental'
-    puts '6. List all rentals for a given person id'
-    puts '7. Exit'
+    prompts.each do |element|
+      puts element
+    end
   end
 
   # rubocop:disable Metrics
@@ -34,6 +32,7 @@ class App
       list_persons
     when 3
       create_person
+      true
     when 4
       create_book
     when 5
@@ -43,12 +42,11 @@ class App
     when 7
       puts "\n"
       puts 'Thank you for using this app.'
-      true
+      false
     else
       puts "\n"
       puts 'Warning! Please provide a valid number'
     end
-    false
   end
   # rubocop:enable Metrics
 
