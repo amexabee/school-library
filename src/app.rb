@@ -35,8 +35,10 @@ class App
       true
     when 4
       create_book
+      true
     when 5
       create_rental
+      true
     when 6
       list_rentals
     when 7
