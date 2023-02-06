@@ -28,7 +28,7 @@
 
 # 📖 OOP School Library <a name="about-project"></a>
 
-In this project, I started building my school library app. In this initial step, I have implemented the classes to represent students and teachers.
+In this project, we started building my school library app. In this initial step, we have implemented the classes to represent students and teachers.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -80,6 +80,12 @@ ruby person.rb
 - GitHub: [@amexabee](https://github.com/amexabee)
 - Twitter: [@i_amanuel](https://twitter.com/i_amanuel)
 - LinkedIn: [Amanuel Galema](https://linkedin.com/in/amanuel-galema)
+
+👤 **Martin Perez Bazan**
+
+- GitHub: [@mperezbazan](https://github.com/mperezbazan)
+- Twitter: [@mperezbazan](https://twitter.com/mperezbazan)
+- LinkedIn: [mperezbazan](https://linkedin.com/in/mperezbazan)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
