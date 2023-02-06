@@ -6,7 +6,7 @@ require_relative './functions/create_rental'
 require_relative './functions/list_rentals'
 
 class App
-  attr_reader :books, :persons, :rentals, :prompts
+  attr_reader :books, :persons, :rentals
 
   def initialize
     @books = []

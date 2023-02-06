@@ -14,7 +14,7 @@ def main
     7. Exit"
     input = gets.chomp.to_i
     if input == 7
-      puts 'Thank you for using this app.'
+      puts "\nThank you for using this app."
       break
     end
     app.receive_input(input)
