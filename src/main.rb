@@ -3,6 +3,7 @@ require_relative 'app'
 def main
   puts 'Welcome to School Library App!'
   app = App.new
+  app.load
   loop do
     puts "\nPlease choose an option by entering a number
     1. List all books
@@ -14,6 +15,7 @@ def main
     7. Exit"
     input = gets.chomp.to_i
     if input == 7
+      app.save_data
       puts "\nThank you for using this app."
       break
     end
