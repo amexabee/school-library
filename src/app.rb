@@ -40,9 +40,10 @@ class App
   def save_data
     save_book
     save_person
+    save_rental
   end
 
-  def load 
+  def load
     load_data
   end
 end
