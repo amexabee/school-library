@@ -5,7 +5,7 @@ describe Student do
     @student = Student.new 11, 'Name'
   end
   describe 'Testing for Student Class' do
-    it 'Take 3 parameters and return a Person object' do
+    it 'Take 2 parameters and return a Student object' do
       expect(@student).to be_instance_of Student
     end
 

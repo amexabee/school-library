@@ -5,7 +5,7 @@ describe Teacher do
     @teacher = Teacher.new 30, 'Chemistry', 'Name'
   end
   describe 'Testing for Teacher Class' do
-    it 'Take 3 parameters and return a Person object' do
+    it 'Take 3 parameters and return a Teacher object' do
       expect(@teacher).to be_instance_of Teacher
     end
 
