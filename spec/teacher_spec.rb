@@ -18,12 +18,11 @@ describe Teacher do
     end
 
     it 'Return the correct Specialization' do
-        expect(@teacher.specialization).to eql 'Chemistry'
-      end
+      expect(@teacher.specialization).to eql 'Chemistry'
+    end
 
     it 'Check that can\t use service' do
       expect(@teacher.can_use_services?).to be true
     end
-    
   end
 end

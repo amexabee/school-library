@@ -6,9 +6,8 @@ describe CapitalizeDecorator do
     @person = Person.new 20, 'name'
     @capitalize = CapitalizeDecorator.new @person
   end
-  
+
   it 'Returns name capitalized' do
     expect(@capitalize.correct_name).to eql 'Name'
   end
-
 end

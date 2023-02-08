@@ -22,7 +22,7 @@ describe Student do
     end
 
     it 'Check the play_hooky method' do
-        expect(@student.play_hooky).to eql '¯(ツ)/¯'
-      end
+      expect(@student.play_hooky).to eql '¯(ツ)/¯'
+    end
   end
 end

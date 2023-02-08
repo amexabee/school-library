@@ -6,9 +6,8 @@ describe TrimmerDecorator do
     @person = Person.new 20, 'nameistoolong'
     @trimmer = TrimmerDecorator.new @person
   end
-  
+
   it 'Returns trimmed name' do
     expect(@trimmer.correct_name).to eql 'nameistool'
   end
-
 end
